@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<!--
+Name: Tadjiev Mukhammadkhon  Student#0971040
+Date: 24/04/2020
+Purpose: Final Project Coding
+-->
+
+<head>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Moser Store</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="store.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+
+<body onload="loadingAll()">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand order-1 mr-0" href="#">Presented by Moser</a><span class="navbar-brand order-2 mr-0" id="dateArea">Date/Time</span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#About">About</a>
+                    <a class="nav-item nav-link" href="#dateAreaTwo">Watches</a>
+                    <a class="nav-item nav-link" href="#dateAreaTwo">Store</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- /Navbar -->
+
+
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
+        <div class="container text-sm-center pt-5">
+            <h1 class="display-2">Online Store Of Moser</h1>
+            <p class="lead">One Day 10% Discount</p>
+
+            <div class="btn-group mt-4" role="group" aria-label="Callout buttons">
+                <button type="button" class="btn btn-warning btn-lg">Register Now</button>
+                <a class="btn btn-light btn-lg" href="#watches">See the Watches</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Jumbotron -->
+
+
+    <div class="container pt-4">
+        <!-- about -->
+        <div class="row">
+            <div class="col-lg order-lg-2">
+                <h3 class="mb-4">Limited Vantablack Edition</h3>
+                <img class="pic img-responsive mb-4  rounded d-none d-sm-block" src="images/vantablack.jpg" alt="Vantablack">
+                <p class="text-center">Ever striving for a unique angle, H. Moser & Cie has launched three new models that feature dials made from Vantablack, aka "the blackest black ever produced by artificial means!</p>
+            </div>
+
+            <div class="col-lg order-lg-1">
+                <h3 class="mb-4">Swiss Mad Cheese Watch</h3>
+                <img class="pic img-responsive mb-4  rounded d-none d-sm-block" src="images/cheese.jpg" alt="Cheese">
+                <p class="text-center">Introducing The H. Moser Swiss Mad Watch, With A Case Made Of Real Swiss Cheese!</p>
+
+            </div>
+            <div class="col-lg order-lg-3">
+                <h3 class="mb-4">Latest Streamliner Watch</h3>
+                <img class="pic img-responsive mb-4  rounded d-none d-sm-block" src="images/streamliner.jpg" alt="Streamliner">
+                <p class="text-center">Introducing The Moser Streamliner Flyback Chronograph Automatic!</p>
+            </div>
+        </div>
+        <!-- /About -->
+        <h1 id="storeQuote"></h1>
+        <br>
+        <input type="button" class="buttonSelect" value="Load Quote" id="loadQuote" />
+        <br>
+        <br>
+        <span id="dateAreaTwo" style="float: right;">Date/Time</span>
+        <br/>
+        <span style="float: right; font-style: bold; font-family: 'Mina', sans-serif; color:black;">
+			 <mark>Currency:</mark>
+			<img class="currencyFlag" src="images/canada.jpg" width="2" height="60" onchange="displayStoreItems()"/>
+			<select id="currencySelector"  onchange="displayStoreItems()" >
+                <option selected value="CAD" id="currencyCAD" >CAD</option>
+				<option value="USD" id="currencyUSD" >USD</option>
+				<option value="GBP" id="currencyGBP" >GBP</option>
+			</select>
+		</span>
+        <br>
+        <div>
+            <legend class="storeItems">Store Items</legend>
+
+            <select id="displayFilter" onchange="displayStoreItems()">
+                        <option  name="filter" value="All">All</option>
+                        <option name="filter" value="Complications">Complications</option>
+                        <option name="filter" value="Classic">Classic</option>
+                        <option name="filter" value="Sporty">Sporty</option>
+                        </select>
+            <br/>
+        </div>
+        <!-- Main -->
+        <br>
+        <main class="container">
+            <!-- Store Items Beginning -->
+            <div class="d-flex justify-content-around row row-cols-1 row-cols-sm-2 row-cols-md-3" id="inventoryOutput"></div>
+            <!-- Store Items End of Div-->
+
+        </main>
+        <!-- End of the Main Tag -->
+        <br>
+        <br>
+        <form>
+            <h2>Select Items</h2>
+            <p>
+                Product Id: <input type="text" id="addItemId" /> &nbsp;
+                <span id="addIDValidationMessage"></span>
+            </p>
+            <p>
+                Quantity: <input type="number" id="addItemQty" /> &nbsp;
+                <span id="addQtyValidationMessage"></span>
+            </p>
+
+            <p>
+                <input type="button" class="buttonSelect" value="Item Details" onclick="displayItemDetails()" />
+                <input type="button" class="buttonSelect" value="Add Item" onclick="addToCart()" />
+                <input type="button" class="buttonSelect" value="Remove Item" onclick="removeFromCart()" />
+            </p>
+
+        </form>
+
+        <br>
+        <fieldset>
+            <h2 class="letter">Your Cart</h2>
+            <br>
+            <div class="d-flex justify-content-around row row-cols-1 row-cols-sm-2 row-cols-md-3" id="cartOutput"></div>
+            <br>
+            <!--<input type="button" value="Confirm Order" style="padding: 5px;" onclick=" calculateCartTotals()" /> -->
+            <h2 class="letter">Cart Checkout</h2>
+            <div id="cartSubtotal"></div>
+            <div id="cartShipping"></div>
+            <div id="subtotalShipping"></div>
+            <div id="cartTax"></div>
+            <div id="cartTotal"></div>
+
+        </fieldset>
+        <br>
+        <form>
+            <fieldset>
+                <h2 class="letter">Review an Item</h2>
+                <p>Product ID: <input type="text" id="reviewId" />&nbsp;<span id="reviewIdMsg"></span></p>
+                <p>Review: <input type="text" id="reviewDesc" size="60" /></p>
+                <p><input type="button" class="buttonSelect" value="Review" onclick="reviewItem()" /></p>
+            </fieldset>
+        </form>
+        <br>
+        <br>
+        <br>
+        <!-- Call out button -->
+        <button type="button" class="btn btn-outline-warning btn-lg d-block mx-auto my-5">Don't Miss Out! Register Now</button>
+        <!-- signup form -->
+        <hr>
+        <div class="row py-4 text-muted">
+            <div class="col-md col-xl-5">
+                <p><strong>About Moser</strong></p>
+                <p>Last but not least, ingenuity, a quality clearly visible in the unique features of H. Moser creations, is expressed through simple and functional mechanisms devised by the H. Moser watchmakers. H. Moser products, which are soberly uncluttered
+                    while embodying a rare degree of complexity, are truly exceptional.</p>
+            </div>
+            <div class="col-md col-xl-5 ml-auto">
+                <p><strong>Stay up-to-date on the Latest News and Launches</strong></p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Email">
+                    <span class="input-group-btn">
+                <button class="btn btn-warning" type="button">Sign up</button>
+              </span>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        </span>
+        <!-- /container -->
+
+
+        <!-- Main Javascript File -->
+        <script src="project.js"></script>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <!--
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    -->
+
+
+</body>
+
+
+</html>
