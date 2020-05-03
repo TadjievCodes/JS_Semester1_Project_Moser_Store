@@ -122,11 +122,12 @@ Purpose: Final Project Coding
         <form>
             <h2>Select Items</h2>
             <p>
-                Product Id: <input type="text" id="addItemId" /> &nbsp;
+                Product Id: <input type="text" id="addItemId" placeholder="Enter the Product Id" /> &nbsp;
                 <span id="addIDValidationMessage"></span>
             </p>
             <p>
-                Quantity: <input type="number" id="addItemQty" /> &nbsp;
+                Quantity: <input type="number" id="addItemQty" placeholder="Enter the Quantity" /> &nbsp;
+                <!--When we use a placeholder, it doesn't show a number list, in case remove the placehodler to have it back again-->
                 <span id="addQtyValidationMessage"></span>
             </p>
 
@@ -157,8 +158,8 @@ Purpose: Final Project Coding
         <form>
             <fieldset>
                 <h2 class="letter">Review an Item</h2>
-                <p>Product ID: <input type="text" id="reviewId" />&nbsp;<span id="reviewIdMsg"></span></p>
-                <p>Review: <input type="text" id="reviewDesc" size="60" /></p>
+                <p>Product ID: <input type="text" id="reviewId" placeholder="Enter the Product Id" />&nbsp;<span id="reviewIdMsg"></span></p>
+                <p>Review: <input type="text" id="reviewDesc" size="60" placeholder="Enter the Review Message" /></p>
                 <p><input type="button" class="buttonSelect" value="Review" onclick="reviewItem()" /></p>
             </fieldset>
         </form>

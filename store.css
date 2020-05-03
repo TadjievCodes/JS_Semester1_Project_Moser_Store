@@ -6,6 +6,18 @@
     }
     /* To highlight the line inside the input I used Special property caret-color*/
     
+    html {
+        scroll-behavior: smooth;
+        overflow-y: scroll;
+        /* overflow-x: auto;*/
+        overflow: scroll;
+    }
+    /*to let the color of the input box be deeppink if nothing entered on the input */
+    
+    input:placeholder-shown {
+        border-color: deeppink;
+    }
+    
     .display-2 {
         font-family: 'Stylish', sans-serif;
         text-transform: uppercase;

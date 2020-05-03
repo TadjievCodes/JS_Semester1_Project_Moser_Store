@@ -690,24 +690,24 @@
             points++;
         }
 
-        /*
+
         if (points === 4) {
             alert("Successful purchase of the Timepiece");
             cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
             itemIDColor.style.borderColor = "#008000";
             itemQty.style.borderColor = "#008000";
         }
-*/
 
-        if (cartItems.find(p => p.productId === itemID) && points === 4) {
-            cartItems[0].quantity++;
-            console.log(cartItems.quantity);
-            alert("Successful incremented purchase of the Timepiece");
-        } else {
-            cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
-            displayCartItems();
-        }
-
+        /*
+                if (cartItems.find(p => p.productId === itemID) && points === 4) {
+                    cartItems[0].quantity++;
+                    console.log(cartItems.quantity);
+                    alert("Successful incremented purchase of the Timepiece");
+                } else {
+                    cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
+                    displayCartItems();
+                }
+        */
 
         console.log(cartItems);
         //Calling the function to display the added Items in the cart
