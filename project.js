@@ -852,6 +852,7 @@
         let reviewDisplay = document.getElementById('reviewId').value;
         let reviewDisplaying = document.getElementById('reviewId');
         let reviewIdInput = document.getElementById('reviewDesc').value;
+        let reviewIdEntry = document.getElementById('reviewDesc');
         let reviewIdMsg = document.getElementById('reviewIdMsg');
 
 
@@ -865,6 +866,7 @@
                           ${reviewIdInput}`);
 
                 reviewDisplaying.style.borderColor = "#008000";
+                reviewIdEntry.style.borderColor = "#008000";
 
                 reviewIdMsg.innerHTML += `Latest Review: ${reviewIdInput}`;
 
