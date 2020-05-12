@@ -679,7 +679,7 @@
         } else {
             points++;
         }
-        // When I run the line 1054 add more items than quantity, it triggers first the 1049 line alert and then the alert of 1055 line
+
         if (quantityCart > obj[0].quantity) {
             alert(`Unfortunately, We don't have these many watches available in stock `);
             itemQty.style.borderColor = "#FF0000";
@@ -690,24 +690,50 @@
             points++;
         }
 
-
-        if (points === 4) {
-            alert("Successful purchase of the Timepiece");
-            cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
-            itemIDColor.style.borderColor = "#008000";
-            itemQty.style.borderColor = "#008000";
-        }
+        // The previous valid working condition 
+        /*
+         if (points === 4) {
+             alert("Successful purchase of the Timepiece");
+             cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
+             itemIDColor.style.borderColor = "#008000";
+             itemQty.style.borderColor = "#008000";
+         }
+          */
 
         /*
-                if (cartItems.find(p => p.productId === itemID) && points === 4) {
-                    cartItems[0].quantity++;
-                    console.log(cartItems.quantity);
-                    alert("Successful incremented purchase of the Timepiece");
-                } else {
-                    cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
-                    displayCartItems();
-                }
+        if (cartItems.find(p => p.productId === itemID)) {
+            cartItems.indexOf.quantity++;
+            console.log(cartItems.quantity);
+            points++;
+            alert("Successful incremented purchase of the Timepiece");
+        } else {
+            cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
+            displayCartItems();
+        }
+
+
+        if (points === 5) {
+            cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
+            displayCartItems();
+        }       if (quantityCart > obj[0].maxPerCustomer) {
         */
+
+        if (points === 4) {
+            let item = cartItems.find(p => p.productId == itemID);
+            if (item) {
+                item.quantity += quantityCart; // adds variable amount instead of quantity++ unary operator used to add only one item when there are 2 items
+                console.log(cartItems.quantity); // Adding one item for ++ unary operator is the default behaviour
+                // points++;        // nope, don't need points anymore
+                alert("Successful incremented purchase of the Timepiece");
+            } else {
+                cartItems.push(new cartItem(itemID, obj[0].price, quantityCart, obj[0].costOfShipping));
+                itemIDColor.style.borderColor = "#008000";
+                itemQty.style.borderColor = "#008000";
+                displayCartItems();
+            }
+        }
+
+
 
         console.log(cartItems);
         //Calling the function to display the added Items in the cart
@@ -786,7 +812,7 @@
 
         // calling the function here as well
         displayCartItems();
-        // looping through cartItems to get the price of the item and multiply to the quantoty and get the cartSubtotal amount by that
+        // looping through cartItems to get the price of the item and multiply to the quantity and get the cartSubtotal amount by that
         for (let index = 0; index < cartItems.length; index++) {
             const cartPrice = cartItems[index].price;
             var currencyChangedPrice = cartPrice * exchangeRate;
