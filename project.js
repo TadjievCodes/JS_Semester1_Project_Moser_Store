@@ -438,7 +438,7 @@
     function displayStoreItems() {
 
         const outputElement = document.getElementById('inventoryOutput');
-        const departmentSelection = document.getElementById('displayFilter')
+        const departmentSelection = document.getElementById('displayFilter');
 
         // clears the output every time
         outputElement.innerHTML = "";
